@@ -4,7 +4,7 @@
 
 int checker(std::string current_pump_status_string, std::string current_number_string, int current_collision_count) {
 
-
+	std::cout << "";
 	//Wenn keine Zahlen übrig sind, haben wir das Ende der Möglichkeiten für diese Iteration erreicht. Wenn keine # vorhanden sind ist dies ein valider pfad sonst nicht.
 	if (current_number_string.empty())
 	{
@@ -39,6 +39,10 @@ int checker(std::string current_pump_status_string, std::string current_number_s
 		if (current_number_string[0] - '0' == current_collision_count)
 		{
 			possibilities += checker(current_pump_status_string.substr(1), current_number_string.substr(1), 0);
+		}
+		else if (current_number_string[0] - '0' != 0 && current_collision_count > 0) //NEW
+		{
+			return 0;
 		}
 		else possibilities += checker(current_pump_status_string.substr(1), current_number_string, 0);
 	}
